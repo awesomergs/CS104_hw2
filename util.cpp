@@ -15,16 +15,21 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    // std::set<char> punct = {"'",'"', ',', '.', ';', ':', '!'}; scrapped, its too big a list across 4 diff groups (vs 3 for alphanumeric)
+    rawWords = convToLower(rawWords);
+    int s = rawWords.size();
+    int left = 0;
+    std::set<std::string> ans = {};
+    for (int right = 0; right < s; right++){
+        if (!((rawWords[right] >= 'a' && rawWords[right] <= 'z') || (rawWords[right] >= 'A' && rawWords[right] <= 'Z') || (rawWords[right] >= '0' && rawWords[right] <= '9'))){
+            if (right-left > 1) {ans.insert(rawWords.substr(left, right-left));}
+            left = right + 1;
+        }
+    }
 
+    if (s-left > 1) {ans.insert(rawWords.substr(left, s-left));}
 
-
-
-
-
-
-
-
-
+    return ans;
 }
 
 /**************************************************

@@ -1,0 +1,31 @@
+#include <sstream>
+#include "book.h"
+#include "util.h"
+using namespace std;
+
+Book::Book(const std::string name, double price, int quantity, const std::string ISBN, const std::string authour) : 
+    Product("book", name, price, quantity), 
+    ISBN_(ISBN), 
+    author_(author_)
+{}
+
+Book::~Book(){}
+
+std::set<std::string> Book::keywords() const {
+    set<string> nameWords = parseStringToWords(name_);
+    set<string> authorWords = parseStringToWords(author_);
+    set<string> keys = setUnion(nameWords, authorWords);
+    keys.insert(convToLower(ISBN_));
+    return keys;
+}
+
+std::string Book::displayString() const {
+    stringstream ss;
+    ss << name_ << "\n"
+    << "Author: " << author_ << "\n"
+    << "ISBN: " << ISBN_ << "\n"
+    << "Price: $" << price_ << "\n"
+    << "Quantity: " << qty_ << "left.";
+
+    return ss.str();
+}
