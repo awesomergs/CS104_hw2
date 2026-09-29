@@ -3,10 +3,10 @@
 #include "util.h"
 using namespace std;
 
-Book::Book(const std::string name, double price, int quantity, const std::string ISBN, const std::string authour) : 
+Book::Book(const std::string name, double price, int quantity, const std::string ISBN, const std::string author) : 
     Product("book", name, price, quantity), 
     ISBN_(ISBN), 
-    author_(author_)
+    author_(author)
 {}
 
 Book::~Book(){}
@@ -25,7 +25,7 @@ std::string Book::displayString() const {
     << "Author: " << author_ << "\n"
     << "ISBN: " << ISBN_ << "\n"
     << "Price: $" << price_ << "\n"
-    << "Quantity: " << qty_ << "left.";
+    << "Quantity: " << qty_ << " left.";
 
     return ss.str();
 }
