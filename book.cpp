@@ -29,3 +29,9 @@ std::string Book::displayString() const {
 
     return ss.str();
 }
+
+void Book::dump(std::ostream& os) const
+{
+    Product::dump(os);
+    os << ISBN_ << "\n" << author_ << endl;
+}
