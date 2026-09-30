@@ -20,11 +20,8 @@ std::set<std::string> Movie::keywords() const {
 std::string Movie::displayString() const {
     stringstream ss;
     ss << name_ << "\n"
-    << "Genre: " << genre_ << "\n"
-    << "Rating: " << rating_ << "\n"
-    << "Price: $" << price_ << "\n"
-    << "Quantity: " << qty_ << " left.";
-
+       << "Genre: " << genre_ << " Rating: " << rating_ << "\n"
+       << price_ << " " << qty_ << " left.";
     return ss.str();
 }
 

@@ -19,14 +19,12 @@ std::set<std::string> Book::keywords() const {
     return keys;
 }
 
-std::string Book::displayString() const {
+std::string Book::displayString() const
+{
     stringstream ss;
     ss << name_ << "\n"
-    << "Author: " << author_ << "\n"
-    << "ISBN: " << ISBN_ << "\n"
-    << "Price: $" << price_ << "\n"
-    << "Quantity: " << qty_ << " left.";
-
+       << "Author: " << author_ << " ISBN: " << ISBN_ << "\n"
+       << price_ << " " << qty_ << " left.";
     return ss.str();
 }
 
